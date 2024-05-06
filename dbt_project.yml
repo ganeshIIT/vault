@@ -40,7 +40,7 @@ vars:
   tpch_size: 10 #1, 10, 100, 1000, 10000
 
 models:
-  dbtvault_snowflake_demo:
+  vault_project:
     raw_stage:
       +materialized: view
       +tags:
