@@ -41,6 +41,12 @@ vars:
 
 models:
   vault_project:
+
+    +pre-hook: 
+      sql: "{{ get_audit_hook(this, 'start')}}"
+    +post-hook:
+      sql: "{{ get_audit_hook(this, 'end')}}"
+
     raw_stage:
       +materialized: view
       +tags:
