@@ -21,5 +21,4 @@ with empty_table as (
 )
 
 select * from empty_table
--- This is a filter so we will never actually insert these values
 where 1 = 0

@@ -1,4 +1,5 @@
 {% macro log_dbt_results(results) %}
+    -- depends_on: {{ ref('dbt_audit') }}
     {%- if execute -%}
         {%- set parsed_results = parse_dbt_results(results) -%}
         {%- if parsed_results | length  > 0 -%}
@@ -34,5 +35,6 @@
             {%- do run_query(insert_dbt_results_query) -%}
         {%- endif -%}
     {%- endif -%}
+    -- This macro is called from an on-run-end hook and therefore must return a query txt to run. Returning an empty string will do the trick
     {{ return ('') }}
 {% endmacro %}
