@@ -72,3 +72,6 @@ models:
       t_links:
         +tags:
           - 't_link'
+
+on-run-end: 
+  - "{{ log_dbt_results(results) }}"
